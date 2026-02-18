@@ -3,15 +3,16 @@ import type { Pokemon } from "../types/Pokemon";
 import { toast } from "react-hot-toast";
 
 export const useTeam = () => {
-  const [team, setTeam] = useState<Pokemon[]>([]);
-
-  useEffect(() => {
+  // CORRECCIÓN: Leemos el localStorage DENTRO del useState.
+  // Esto solo se ejecuta una vez al principio, antes de renderizar nada.
+  const [team, setTeam] = useState<Pokemon[]>(() => {
     const savedTeam = localStorage.getItem("myPokemonTeam");
-    if (savedTeam) {
-      setTeam(JSON.parse(savedTeam));
-    }
-  }, []);
+    return savedTeam ? JSON.parse(savedTeam) : [];
+  });
 
+  // Ya no necesitamos el useEffect de "Cargar" porque lo hicimos arriba ⬆️
+
+  // Este useEffect solo sirve para GUARDAR cuando haya cambios
   useEffect(() => {
     localStorage.setItem("myPokemonTeam", JSON.stringify(team));
   }, [team]);
