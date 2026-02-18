@@ -7,8 +7,6 @@
 
 **PokéPro** es una aplicación moderna de gestión de equipos Pokémon. Utiliza la arquitectura de componentes de React junto con TypeScript para ofrecer una experiencia de usuario fluida, robusta y con persistencia de datos local.
 
-![Demo de la aplicación](./public/screenshot.png)
-
 ## ✨ Características Clave
 
 ### 🛠 Ingeniería de Software
